@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:novi_app/colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Novi Hogeschool',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: CustomColors.noviRedDark,
       ),
       home: MyHomePage(title: 'Novi Hogeschool'),
     );
