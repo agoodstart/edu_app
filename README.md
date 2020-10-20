@@ -1,16 +1,23 @@
-# novi_app
+# About this project
 
-A new Flutter project.
+This project is built for integrading and enhancing the use of the NOVI edhub system in a flexible way.
+This app will increase the educational experience for both students and teachers, making it more accessible than ever before.
 
-## Getting Started
+This app's primary goal is easy access: it must be clear and intuitive. The user should not get lost. The user's destination shouldn't be more than 3 clicks away.
 
-This project is a starting point for a Flutter application.
+# Using the readme
 
-A few resources to get you started if this is your first Flutter project:
+This readme will act as a log. I will probably dump some ideas in here and links, as well as possible roadmaps.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- - - -
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Starting up ##
+_20 - 10 - 2020_
+
+Before I start coding, I need to know what I want to do with this project... I need to know if I am able to access certain resources,
+like integrading MS Teams, am I allowed to access some of the NOVI edhub data?
+
+That is a worry for later. First let's brainstorm about the UI. But where do I start?
+* Look at examples from other schools:
+    * [University of Miami](https://www.youtube.com/watch?v=NOTstP0ucHA "Youtube trailer")
+    * [University of Middlesex](https://www.youtube.com/watch?v=kIiQgTs-zYU "Youtube trailer")
