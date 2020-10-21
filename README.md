@@ -21,3 +21,15 @@ That is a worry for later. First let's brainstorm about the UI. But where do I s
 * Look at examples from other schools:
     * [University of Miami](https://www.youtube.com/watch?v=NOTstP0ucHA "Youtube trailer")
     * [University of Middlesex](https://www.youtube.com/watch?v=kIiQgTs-zYU "Youtube trailer")
+
+* Useful packages from pub.dev:
+    * [Carousel Slider](https://pub.dev/packages/carousel_slider "Carousel slider")
+    * [Provider](https://pub.dev/packages/provider "Provider")
+    * [BloC](https://pub.dev/packages/bloc "BloC")
+    * [Flutter SVG](https://pub.dev/packages/flutter_svg "Flutter SVG")
+    * [Internationalization](https://pub.dev/packages/intl "Flutter Intl")
+    * [Animations](https://pub.dev/packages/animations "Pre-built animations")
+    * [Geolocator](https://pub.dev/packages/geolocator "Location services")
+
+* Installing Adobe XD
+* Checking the EdHub mobile version.
