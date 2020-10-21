@@ -1,17 +1,17 @@
-# About this project
+### About this project ###
 
 This project is built for integrading and enhancing the use of the NOVI edhub system in a flexible way.
 This app will increase the educational experience for both students and teachers, making it more accessible than ever before.
 
 This app's primary goal is easy access: it must be clear and intuitive. The user should not get lost. The user's destination shouldn't be more than 3 clicks away.
 
-# Using the readme
+### Using the readme ###
 
 This readme will act as a log. I will probably dump some ideas in here and links, as well as possible roadmaps.
 
 - - - -
 
-## Starting up ##
+### Starting up ###
 _20 - 10 - 2020_
 
 Before I start coding, I need to know what I want to do with this project... I need to know if I am able to access certain resources,
