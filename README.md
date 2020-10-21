@@ -31,5 +31,19 @@ That is a worry for later. First let's brainstorm about the UI. But where do I s
     * [Animations](https://pub.dev/packages/animations "Pre-built animations")
     * [Geolocator](https://pub.dev/packages/geolocator "Location services")
 
-* Installing Adobe XD
+* Adobe XD
 * Checking the EdHub mobile version.
+
+### Done ###
+_21 - 10 - 2020_
+
+* Bottom Navigation Bar
+    * Done:
+        * Setting up custom bottom navigation bar
+        * Icons
+        * Floating Action button.
+    * Todo:
+        * Increase Floating Action button size
+        * Add circular submenu to floating action button:
+            * [Radial Menu](https://fireship.io/lessons/flutter-radial-menu-staggered-animations/ "Radial Menu")
+            * [Circular Menu](https://www.youtube.com/watch?v=S7KG4prI7A4 "Youtube Video")

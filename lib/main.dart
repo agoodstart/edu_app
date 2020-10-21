@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:novi_app/colors.dart';
+import 'package:novi_app/components/navbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Novi Hogeschool',
       theme: ThemeData(
         primarySwatch: CustomColors.noviRedDark,
@@ -30,20 +32,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'NOVI Hogeschool',
-            ),
-          ],
+        backgroundColor: Colors.white10,
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: Stack(children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: CustomNavBar(size: size).navBar(),
+          )
+        ]));
   }
 }
