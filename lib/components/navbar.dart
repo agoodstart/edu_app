@@ -2,24 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:novi_app/colors.dart';
 // import 'package:novi_app/components/fab_menu.dart';
 
-class CustomNavBar {
+class CustomNavbar extends StatefulWidget {
   final Size size;
 
-  CustomNavBar({this.size});
+  CustomNavbar({Key key, @required this.size}) : super(key: key);
+
+  @override
+  _CustomNavbarState createState() => _CustomNavbarState();
+}
+
+class _CustomNavbarState extends State<CustomNavbar>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+  Animation degOneTranslationAnimation;
 
   double getRadiansFromDegree(double degree) {
     double unitRadian = 57.295779513;
     return degree / unitRadian;
   }
 
-  Widget navBar() {
+  @override
+  void initState() {
+    animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 250));
+    degOneTranslationAnimation =
+        Tween(begin: 0.0, end: 1.0).animate(animationController);
+    super.initState();
+    animationController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-        width: this.size.width,
+        width: widget.size.width,
         height: 55,
         // color: Colors.white,
         child: Stack(children: [
           CustomPaint(
-            size: Size(this.size.width, 80),
+            size: Size(widget.size.width, 80),
             painter: RPSCustomPainter(),
           ),
           Center(
@@ -27,8 +49,8 @@ class CustomNavBar {
               child: Stack(
                 children: <Widget>[
                   Transform.translate(
-                    offset:
-                        Offset.fromDirection(getRadiansFromDegree(320), 100),
+                    offset: Offset.fromDirection(getRadiansFromDegree(320),
+                        degOneTranslationAnimation.value * 100),
                     child: CircularButton(
                       color: Colors.blue,
                       width: 50,
@@ -41,8 +63,8 @@ class CustomNavBar {
                     ),
                   ),
                   Transform.translate(
-                    offset:
-                        Offset.fromDirection(getRadiansFromDegree(270), 100),
+                    offset: Offset.fromDirection(getRadiansFromDegree(270),
+                        degOneTranslationAnimation.value * 100),
                     child: CircularButton(
                       color: Colors.black,
                       width: 50,
@@ -55,8 +77,8 @@ class CustomNavBar {
                     ),
                   ),
                   Transform.translate(
-                    offset:
-                        Offset.fromDirection(getRadiansFromDegree(220), 100),
+                    offset: Offset.fromDirection(getRadiansFromDegree(220),
+                        degOneTranslationAnimation.value * 100),
                     child: CircularButton(
                       color: Colors.orangeAccent,
                       width: 50,
@@ -76,12 +98,18 @@ class CustomNavBar {
                       Icons.menu,
                       color: Colors.white,
                     ),
-                    onClick: () {},
+                    onClick: () {
+                      if (animationController.isCompleted) {
+                        animationController.reverse();
+                      } else {
+                        animationController.forward();
+                      }
+                    },
                   ),
                 ],
               )),
           Container(
-              width: this.size.width,
+              width: widget.size.width,
               height: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,7 +122,7 @@ class CustomNavBar {
                     icon: Icon(Icons.help_outline),
                     onPressed: () {},
                   ),
-                  Container(width: this.size.width * .20),
+                  Container(width: widget.size.width * .20),
                   IconButton(
                     icon: Icon(Icons.notifications),
                     onPressed: () {},
