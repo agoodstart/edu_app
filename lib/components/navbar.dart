@@ -1,28 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:novi_app/colors.dart';
+// import 'package:novi_app/components/fab_menu.dart';
 
 class CustomNavBar {
   final Size size;
 
   CustomNavBar({this.size});
 
+  double getRadiansFromDegree(double degree) {
+    double unitRadian = 57.295779513;
+    return degree / unitRadian;
+  }
+
   Widget navBar() {
     return Container(
         width: this.size.width,
-        height: 80,
+        height: 55,
         // color: Colors.white,
         child: Stack(children: [
           CustomPaint(
             size: Size(this.size.width, 80),
-            painter: BNBCustomPainter(size: this.size),
+            painter: RPSCustomPainter(),
           ),
           Center(
-              heightFactor: 0.6,
-              child: FloatingActionButton(
-                onPressed: () {},
-                backgroundColor: CustomColors.noviRedDark,
-                child: Icon(Icons.school),
-                elevation: 0.1,
+              heightFactor: .6,
+              child: Stack(
+                children: <Widget>[
+                  Transform.translate(
+                    offset:
+                        Offset.fromDirection(getRadiansFromDegree(320), 100),
+                    child: CircularButton(
+                      color: Colors.blue,
+                      width: 50,
+                      height: 50,
+                      icon: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                      onClick: () {},
+                    ),
+                  ),
+                  Transform.translate(
+                    offset:
+                        Offset.fromDirection(getRadiansFromDegree(270), 100),
+                    child: CircularButton(
+                      color: Colors.black,
+                      width: 50,
+                      height: 50,
+                      icon: Icon(
+                        Icons.camera_alt,
+                        color: Colors.white,
+                      ),
+                      onClick: () {},
+                    ),
+                  ),
+                  Transform.translate(
+                    offset:
+                        Offset.fromDirection(getRadiansFromDegree(220), 100),
+                    child: CircularButton(
+                      color: Colors.orangeAccent,
+                      width: 50,
+                      height: 50,
+                      icon: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
+                      onClick: () {},
+                    ),
+                  ),
+                  CircularButton(
+                    color: CustomColors.noviRedDark,
+                    width: 60,
+                    height: 60,
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
+                    onClick: () {},
+                  ),
+                ],
               )),
           Container(
               width: this.size.width,
@@ -53,32 +109,57 @@ class CustomNavBar {
   }
 }
 
-class BNBCustomPainter extends CustomPainter {
-  final Size size;
-
-  BNBCustomPainter({this.size});
-
+class RPSCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
+    Paint paint = new Paint()
       ..color = Colors.white
-      ..style = PaintingStyle.fill;
-    Path path = Path()..moveTo(0, 20);
-    path.quadraticBezierTo(this.size.width * .20, 0, this.size.width * .35, 0);
-    path.quadraticBezierTo(this.size.width * .40, 0, this.size.width * .40, 20);
-    path.arcToPoint(Offset(this.size.width * .60, 20),
-        radius: Radius.circular(10.0), clockwise: false);
-    path.quadraticBezierTo(this.size.width * .60, 0, this.size.width * .65, 0);
-    path.quadraticBezierTo(this.size.width * .80, 0, this.size.width, 20);
-    path.lineTo(this.size.width, this.size.height);
-    path.lineTo(0, this.size.height);
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 1;
+
+    Path path = Path();
+    path.moveTo(0, size.height);
+    path.lineTo(0, size.height * 0.25);
+    path.quadraticBezierTo(size.width * 0.00, size.height * 0.05,
+        size.width * 0.06, size.height * 0.05);
+    path.cubicTo(size.width * 0.28, size.height * 0.05, size.width * 0.72,
+        size.height * 0.05, size.width * 0.94, size.height * 0.05);
+    path.quadraticBezierTo(
+        size.width * 1.00, size.height * 0.05, size.width, size.height * 0.25);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
     path.close();
-    canvas.drawShadow(path, Colors.black, 5, true);
+
     canvas.drawPath(path, paint);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
+    return true;
+  }
+}
+
+class CircularButton extends StatelessWidget {
+  final double width;
+  final double height;
+  final Color color;
+  final Icon icon;
+  final Function onClick;
+
+  CircularButton(
+      {this.color, this.width, this.height, this.icon, this.onClick});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Container(
+            decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+            width: width,
+            height: height,
+            child: IconButton(
+              icon: icon,
+              enableFeedback: true,
+              onPressed: onClick,
+            )));
   }
 }
