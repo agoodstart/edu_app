@@ -39,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Stack(children: [
-          Positioned(bottom: 0, left: 0, child: CustomNavbar(size: size))
+          Positioned(
+              bottom: 0, left: 0, child: CustomNavbar(size: size).navBar())
         ]));
   }
 }
