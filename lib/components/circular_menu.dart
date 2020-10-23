@@ -13,7 +13,10 @@ class CircularMenu extends StatefulWidget {
 class _CircularMenuState extends State<CircularMenu>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
-  Animation degOneTranslationAnimation;
+  Animation degOneTranslationAnimation,
+      degTwoTranslationAnimation,
+      degThreeTranslationAnimation;
+  Animation rotationAnimation;
 
   double getRadiansFromDegree(double degree) {
     double unitRadian = 57.295779513;
@@ -24,8 +27,27 @@ class _CircularMenuState extends State<CircularMenu>
   void initState() {
     animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 250));
-    degOneTranslationAnimation =
-        Tween(begin: 0.0, end: 1.0).animate(animationController);
+
+    degOneTranslationAnimation = TweenSequence([
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 0.0, end: 1.75), weight: 35.0),
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 1.75, end: 1.0), weight: 65.0),
+    ]).animate(animationController);
+    degTwoTranslationAnimation = TweenSequence([
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 0.0, end: 1.4), weight: 55.0),
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 1.4, end: 1.0), weight: 45.0),
+    ]).animate(animationController);
+    degThreeTranslationAnimation = TweenSequence([
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 0.0, end: 1.2), weight: 75.0),
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 1.2, end: 1.0), weight: 25.0),
+    ]).animate(animationController);
+    rotationAnimation = Tween<double>(begin: 180.0, end: 0.0).animate(
+        CurvedAnimation(parent: animationController, curve: Curves.easeOut));
     super.initState();
     animationController.addListener(() {
       setState(() {});
@@ -39,61 +61,83 @@ class _CircularMenuState extends State<CircularMenu>
         Transform.translate(
           offset: Offset.fromDirection(getRadiansFromDegree(320),
               degOneTranslationAnimation.value * 100),
-          child: CircularButton(
-            color: Colors.blue,
-            width: 50,
-            height: 50,
-            icon: Icon(
-              Icons.add,
-              color: Colors.white,
+          child: Transform(
+            transform:
+                Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))
+                  ..scale(degOneTranslationAnimation.value),
+            alignment: Alignment.center,
+            child: CircularButton(
+              color: Colors.blue,
+              width: 50,
+              height: 50,
+              icon: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              onClick: () {},
             ),
-            onClick: () {},
           ),
         ),
         Transform.translate(
           offset: Offset.fromDirection(getRadiansFromDegree(270),
-              degOneTranslationAnimation.value * 100),
-          child: CircularButton(
-            color: Colors.black,
-            width: 50,
-            height: 50,
-            icon: Icon(
-              Icons.camera_alt,
-              color: Colors.white,
+              degTwoTranslationAnimation.value * 100),
+          child: Transform(
+            transform:
+                Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))
+                  ..scale(degTwoTranslationAnimation.value),
+            alignment: Alignment.center,
+            child: CircularButton(
+              color: Colors.black,
+              width: 50,
+              height: 50,
+              icon: Icon(
+                Icons.camera_alt,
+                color: Colors.white,
+              ),
+              onClick: () {},
             ),
-            onClick: () {},
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(getRadiansFromDegree(220),
-              degOneTranslationAnimation.value * 100),
+            offset: Offset.fromDirection(getRadiansFromDegree(220),
+                degThreeTranslationAnimation.value * 100),
+            child: Transform(
+              transform: Matrix4.rotationZ(
+                  getRadiansFromDegree(rotationAnimation.value))
+                ..scale(degThreeTranslationAnimation.value),
+              alignment: Alignment.center,
+              child: CircularButton(
+                color: Colors.orangeAccent,
+                width: 50,
+                height: 50,
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                onClick: () {},
+              ),
+            )),
+        Transform(
+          transform:
+              Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value)),
+          alignment: Alignment.center,
           child: CircularButton(
-            color: Colors.orangeAccent,
-            width: 50,
-            height: 50,
+            color: CustomColors.noviRedDark,
+            width: 60,
+            height: 60,
             icon: Icon(
-              Icons.person,
+              Icons.menu,
               color: Colors.white,
             ),
-            onClick: () {},
+            onClick: () {
+              if (animationController.isCompleted) {
+                animationController.reverse();
+              } else {
+                animationController.forward();
+              }
+            },
           ),
-        ),
-        CircularButton(
-          color: CustomColors.noviRedDark,
-          width: 60,
-          height: 60,
-          icon: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-          onClick: () {
-            if (animationController.isCompleted) {
-              animationController.reverse();
-            } else {
-              animationController.forward();
-            }
-          },
-        ),
+        )
       ],
     );
   }
