@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:novi_app/components/circular_menu.dart';
+import 'package:badges/badges.dart';
 
 class CustomNavbar {
   final Size size;
@@ -26,23 +27,68 @@ class CustomNavbar {
               height: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: Icon(Icons.home),
-                    onPressed: () {},
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(),
+                        icon: Icon(Icons.home),
+                        onPressed: () {},
+                      ),
+                      Text(
+                        "Home",
+                        textScaleFactor: .85,
+                      )
+                    ],
                   ),
-                  IconButton(
-                    icon: Icon(Icons.help_outline),
-                    onPressed: () {},
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(),
+                        icon: Icon(Icons.calendar_today),
+                        onPressed: () {},
+                      ),
+                      Text(
+                        "Calendar",
+                        textScaleFactor: .85,
+                      )
+                    ],
                   ),
                   Container(width: this.size.width * .20),
-                  IconButton(
-                    icon: Icon(Icons.notifications),
-                    onPressed: () {},
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(),
+                        icon: Icon(Icons.notifications),
+                        onPressed: () {},
+                      ),
+                      Text(
+                        "Alerts",
+                        textScaleFactor: .85,
+                      )
+                    ],
                   ),
-                  IconButton(
-                    icon: Icon(Icons.account_circle_sharp),
-                    onPressed: () {},
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(),
+                        icon: Icon(Icons.account_circle_sharp),
+                        onPressed: () {},
+                      ),
+                      Text(
+                        "Profile",
+                        textScaleFactor: .85,
+                      )
+                    ],
                   ),
                 ],
               ))

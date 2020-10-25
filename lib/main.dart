@@ -11,11 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Novi Hogeschool',
+      title: 'Study',
       theme: ThemeData(
         primarySwatch: CustomColors.noviRedDark,
       ),
-      home: MyHomePage(title: 'Novi Hogeschool'),
+      home: MyHomePage(title: 'Study'),
     );
   }
 }
