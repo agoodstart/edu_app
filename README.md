@@ -1,6 +1,12 @@
 ### About this project ###
 
-This project is built for integrading and enhancing the use of the NOVI edhub system in a flexible way.
+This project is built to enhance the use of educational apps in a flexible way.
+This is the beginning of a new platform: built for studies, schools and other educational needs.
+This project will try to move away from the MS Teams integration a lot of studies use.
+Why?
+* MS Teams can be complex.
+* Made for larger companies, not for schools
+* 
 This app will increase the educational experience for both students and teachers, making it more accessible than ever before.
 
 This app's primary goal is easy access: it must be clear and intuitive. The user should not get lost. The user's destination shouldn't be more than 3 clicks away.
@@ -14,8 +20,7 @@ This readme will act as a log. I will probably dump some ideas in here and links
 ### Starting up ###
 _20 - 10 - 2020_
 
-Before I start coding, I need to know what I want to do with this project... I need to know if I am able to access certain resources,
-like integrading MS Teams, am I allowed to access some of the NOVI edhub data?
+Before I start coding, I need to know what I want to do with this project... 
 
 That is a worry for later. First let's brainstorm about the UI. But where do I start?
 * Look at examples from other schools:
